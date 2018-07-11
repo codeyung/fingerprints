@@ -1,7 +1,7 @@
 # fingerprints
 spring-boot 2.0 fingerprints demo
 
-使用浏览器硬件信息实现移动设备唯一标识（WIFI 环境下  同设备有重复率）
+使用浏览器硬件信息实现移动设备唯一标识（WIFI 环境下 相同型号设备有重复率）
 
 |名称|方法|
 |-|-|

@@ -23,3 +23,7 @@
 /dist/
 /nbdist/
 /.nb-gradle/
+/mvnw.cmd
+/fingerprints.iml
+/mvnw
+/.mvn/

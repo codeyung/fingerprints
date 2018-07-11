@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <title>获取浏览器数据</title>
+    <script type="text/javascript" src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+</head>
+<body>
+<script type="text/javascript">
+
+    document.write("屏幕宽度:" + window.screen.width + "<br>")
+    document.write("屏幕高度:" + window.screen.height + "<br>")
+    document.write("设备像素比:" + window.devicePixelRatio + "<br>")
+    //    document.write("颜色深度:" + window.screen.colorDepth + "<br>")
+
+    var canvas = document.createElement("canvas");
+    var gl = canvas.getContext("experimental-webgl");
+    var debugInfo = gl.getExtension("WEBGL_debug_renderer_info");
+
+    document.write("OpenGL 版本：" + gl.getParameter(gl.VERSION) + "<br>");
+    document.write("显卡渲染器:" + gl.getParameter(debugInfo.UNMASKED_RENDERER_WEBGL) + "<br>");
+    //    document.write("厂商:" + gl.getParameter(gl.VENDOR) + "<br>");
+    //    document.write("OpenGL shading language版本：" + gl.getParameter(gl.SHADING_LANGUAGE_VERSION) + "<br>");
+    //    document.write("最大字体限制:" + gl.getParameter(gl.MAX_TEXTURE_SIZE) + "<br>");
+    //    document.write("显卡供应商：" + gl.getParameter(debugInfo.UNMASKED_VENDOR_WEBGL) + "<br>");
+    document.write("时间:" + new Date().getTime() + "<br>");
+
+
+    //
+    //
+    //    var languages = navigator.languages     // 非 IE 浏览器，语言列表
+    //            || navigator.language      // 非 IE 浏览器，首选语言
+    //            || navigator.userLanguage; // IE 浏览器，首选语言
+    //    document.write("语言列表:" + languages.toString() + "<br>");
+    //    var ua = navigator.userAgent;
+    //    document.write("userAgent:" + ua + "<br>");
+
+    //        var battery = navigator.battery || navigator.webkitBattery || navigator.mozBattery;
+    //
+    //        if (battery) {
+    //            // 显示一些有用属性值
+    //            console.warn("电池充电状态: ", battery.charging); // true
+    //            console.warn("电量水平: ", battery.level); // 0.58
+    //            console.warn("电池使用时间: ", battery.dischargingTime);
+    //        }
+
+    //    var type = navigator.connection
+    //    // bluetooth || cellular || ethernet || none || wifi || wimax || other || unknown
+    //    document.write("网络类型:" + type + "<br>");
+
+    document.write("/////////////////////////////////////////////////////<br>")
+
+    n = {
+        sw: "" + ( window.screen.width || 0),
+        sh: "" + (window.screen.height || 0),
+        sp: window.devicePixelRatio,
+        gv: gl.getParameter(gl.VERSION) || "",
+        gr: gl.getParameter(debugInfo.UNMASKED_RENDERER_WEBGL) || "",
+        time: new Date().getTime()
+    };
+
+    for (var i in n) {
+        document.write(i + ":" + n[i] + "<br>")
+    }
+    document.write("/////////////////////////////////////////////////////<br>")
+
+
+    $.ajax({
+        type: 'GET',
+        url: "/test",
+//        contentType: "application/json;charset=utf-8",
+//        data: n,
+        data: {
+            sw: n.sw,
+            sh: n.sh,
+            sp: n.sp,
+            gv: n.gv,
+            gr: n.gr,
+            time: n.time
+        },
+//        dataType: "json",
+        success: function (result) {     //回调函数，result，返回值
+            alert(result)
+//            console.log(result);
+        }
+
+    });
+
+</script>
+</body>
+</html>

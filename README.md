@@ -1,6 +1,7 @@
 # fingerprints
 spring-boot 2.0 fingerprints demo
-> 使用浏览器硬件信息实现移动设备唯一标识（WIFI 环境下  同设备有重复率）
+
+使用浏览器硬件信息实现移动设备唯一标识（WIFI 环境下  同设备有重复率）
 
 |名称|方法|
 |-|-|
@@ -24,8 +25,11 @@ spring-boot 2.0 fingerprints demo
 |显卡供应商|gl.getParameter(debugInfo.UNMASKED_VENDOR_WEBGL)|
 |用户代理|navigator.userAgent|
 
->上传测试地址
+上传测试地址
+
 http://127.0.0.1:8080/?k1=v1&k2=v2
->获取数据地址
+
+获取数据地址
+
 http://127.0.0.1:8080/test.html
 
